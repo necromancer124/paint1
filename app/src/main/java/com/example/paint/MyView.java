@@ -58,6 +58,12 @@ public class MyView extends View {
                 pointeStart= new Pointe(event.getX(),event.getY());
                 Log.d("ACTION","startdown pointe:"+pointeStart.toString());
                 if (shape != null) {
+                    if (shape.getName().equals("path"))
+                    {
+                        Paint paint=shape.paint;
+                        shape=new Path();
+                        shape.setPaint(paint);
+                    }
                     shape.setStart(pointeStart);
                     move=true;
                 }
@@ -89,6 +95,9 @@ public class MyView extends View {
                 }
                 if (shape.getName().equals("Poliglob")) {
                     newShape=new Poligob(shape.engels,paint,pointeStart,pointeEnd);
+                }
+                if (shape.getName().equals("path")) {
+                    newShape=new Path(shape.list,paint);
                 }
                 // add path
 

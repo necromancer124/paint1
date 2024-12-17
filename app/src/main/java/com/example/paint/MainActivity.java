@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         private MyView myView;
         private Button shapeButton;
-        private Button colourButton;
+        private ImageView colourButton;
         private Dialog shapedialog;
         private Paint paint=new Paint();
     private PickColorDialog d;
@@ -108,14 +109,20 @@ public class MainActivity extends AppCompatActivity {
             buttonPath.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //set up the path here
+                    myView.setShape(new Path(),paint);
                 }
             });
 
             shapedialog.show();
             }
         });
-
+    colourButton=findViewById(R.id.undoButton);
+    colourButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            myView.undo();
+        }
+    });
     }
     @Override
     protected void onResume() {

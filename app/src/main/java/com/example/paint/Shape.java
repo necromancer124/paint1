@@ -3,6 +3,9 @@ package com.example.paint;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Shape {
     Shape(){}
     protected Paint paint;
@@ -11,6 +14,8 @@ public abstract class Shape {
     protected int engels;
 
     protected String name;
+    List<Pointe> list;
+    protected void add (Pointe p){list.add(p);}
       protected void setPaint(Paint paint)
       {
           this.paint=paint;
